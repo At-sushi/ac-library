@@ -92,6 +92,8 @@ struct static_modint : internal::static_modint_base {
     mint operator+() const { return *this; }
     mint operator-() const { return mint() - *this; }
 
+    explicit operator int() const { return val(); }
+
     mint pow(long long n) const {
         assert(0 <= n);
         mint x = *this, r = 1;
@@ -207,6 +209,8 @@ template <int id> struct dynamic_modint : internal::modint_base {
 
     mint operator+() const { return *this; }
     mint operator-() const { return mint() - *this; }
+
+    explicit operator int() const { return val(); }
 
     mint pow(long long n) const {
         assert(0 <= n);
