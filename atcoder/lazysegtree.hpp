@@ -21,11 +21,11 @@ struct lazy_segtree {
   public:
     lazy_segtree() : lazy_segtree(0) {}
     explicit lazy_segtree(int n) : _n(n) {
+        if (_n < 0) throw std::invalid_argument("n should be positive");
         log = internal::ceil_pow2(_n);
         size = 1 << log;
         d = std::vector<S>(2 * size, e());
         lz = std::vector<F>(size, id());
-        assert(op(e(), e()) == e());
     }
     explicit lazy_segtree(const std::vector<S>& v) : lazy_segtree(int(v.size())) {
         assert(_n == int(v.size()));
