@@ -25,11 +25,10 @@ struct lazy_segtree {
         size = 1 << log;
         d = std::vector<S>(2 * size, e());
         lz = std::vector<F>(size, id());
-        for (int i = size - 1; i >= 1; i--) {
-            update(i);
-        }
+        assert(op(e(), e()) == e());
     }
     explicit lazy_segtree(const std::vector<S>& v) : lazy_segtree(int(v.size())) {
+        assert(_n == int(v.size()));
         for (int i = 0; i < _n; i++) d[size + i] = v[i];
         for (int i = size - 1; i >= 1; i--) {
             update(i);
