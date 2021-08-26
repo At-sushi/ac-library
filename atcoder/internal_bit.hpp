@@ -5,6 +5,8 @@
 #include <intrin.h>
 #endif
 
+#include <stdexcept>
+
 namespace atcoder {
 
 namespace internal {
@@ -12,6 +14,8 @@ namespace internal {
 // @param n `0 <= n`
 // @return minimum non-negative `x` s.t. `n <= 2**x`
 int ceil_pow2(int n) {
+    if (n < 0)
+        throw std::invalid_argument("n should be positive");
     int x = 0;
     while ((1U << x) < (unsigned int)(n)) x++;
     return x;
